@@ -4,7 +4,8 @@
   "description": "Api for SJ Infirmary Bad Date List App",
   "main": "index.js",
   "scripts": {
-    "test": "npm run test"
+    "start": "nodemon index.js",
+    "test": "nodemon --exec 'mocha --recursive -R min'"
   },
   "repository": {
     "type": "git",
@@ -22,5 +23,8 @@
     "mocha": "^3.4.2",
     "mongoose": "^4.10.2",
     "supertest": "^3.0.0"
+  },
+  "devDependencies": {
+    "nodemon": "^1.11.0"
   }
 }

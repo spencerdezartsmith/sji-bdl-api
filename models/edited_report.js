@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
+const PointSchema = require('./point_schema');
 
 const EditedReportSchema = new Schema({
 	title: {

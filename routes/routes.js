@@ -1,6 +1,5 @@
-module.exports = (app) => {
+const ReportsController = require('../controllers/reports_controller')
 
-  app.get('/api', (req, res) => {
-    res.send({ hello: 'world' });
-  });
+module.exports = (app) => {
+  app.get('/api', ReportsController.greeting);
 };

@@ -1,0 +1,26 @@
+{
+  "name": "sji-bdl-api",
+  "version": "1.0.0",
+  "description": "Api for SJ Infirmary Bad Date List App",
+  "main": "index.js",
+  "scripts": {
+    "test": "npm run test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/spencerdezartsmith/sji-bdl-api.git"
+  },
+  "author": "Spencer Dezart-Smith & Diana Vashti",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/spencerdezartsmith/sji-bdl-api/issues"
+  },
+  "homepage": "https://github.com/spencerdezartsmith/sji-bdl-api#readme",
+  "dependencies": {
+    "body-parser": "^1.17.2",
+    "express": "^4.15.3",
+    "mocha": "^3.4.2",
+    "mongoose": "^4.10.2",
+    "supertest": "^3.0.0"
+  }
+}

@@ -53,7 +53,8 @@ describe('Reports controller', () => {
     });
   });
 
-  it('POST to /api/reports/:id creates an edited subdocument', (done) => {
+  //Admin can create an edited report or edit an edited report
+  it('POST to /api/reports/:id creates/edits an edited subdocument', (done) => {
     const unEditedReport = new Report(dummyReports.reportOne);
     const edits = dummyReports.editedReportOne;
 
@@ -70,5 +71,20 @@ describe('Reports controller', () => {
             });
         });
     });
-  })
+  });
+
+  // Admin can delete a edited report with removing original
+  it('PUT to /api/reports/:id', (done) => {
+    const report = new Report(dummyReports.reportTwo);
+
+    report.save().then(() => {
+      request(app)
+        .put(`/api/reports/${report._id}`)
+        .end((err, res) => {
+          assert(res.body.edited === false);
+          assert(res.body.editedReport === undefined);
+          done();
+        });
+    });
+  });
 });

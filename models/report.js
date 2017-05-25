@@ -18,6 +18,10 @@ const ReportSchema = new Schema({
 	assaultType: [String],
 	assaultDescription: String,
 	perpetrator: PerpSchema,
+  edited: {
+    type: Boolean,
+    default: false
+  },
 	editedReport: { type: Schema.Types.ObjectId, ref: 'editedReport'}
 });
 

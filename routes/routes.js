@@ -1,5 +1,4 @@
 const ReportsController = require('../controllers/reports_controller');
-const EditedReportsController = require('../controllers/edited_reports_controller')
 
 module.exports = (app) => {
   app.get('/api', ReportsController.greeting);
@@ -9,4 +8,7 @@ module.exports = (app) => {
 
   // Admin read all new unedited reports
   app.get('/api/reports/new', ReportsController.adminReadNewReports);
+
+  // Admin create a new edited report
+  app.post('/api/reports/:id', ReportsController.adminCreateEditedReport);
 };

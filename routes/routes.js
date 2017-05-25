@@ -6,4 +6,7 @@ module.exports = (app) => {
 
   // User created reports
   app.post('/api/reports', ReportsController.userCreateReport);
+
+  // Admin read all new unedited reports
+  app.get('/api/reports/new', ReportsController.adminReadNewReports);
 };

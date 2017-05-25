@@ -11,6 +11,12 @@ module.exports = {
 
     Report.create(reportProps)
       .then(report => res.send(report))
-      .catch(next)
-	}
+      .catch(next);
+	},
+
+  adminReadNewReports(req, res, next) {
+    Report.find({ edited: false })
+      .then(newReports => res.send(newReports))
+      .catch(next);
+  }
 };

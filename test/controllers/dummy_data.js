@@ -19,5 +19,20 @@ module.exports = {
       hair: 'black hair',
       attributes: 'tattoo on right arm'
     }
+  },
+
+	editedReportOne: {
+		title: 'Listen seeing you got ritualistic',
+    content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse molestie rutrum lorem.'
+    geolocation: { type: 'Point', coordinates: [122.41, 37.77] }
+	},
+
+  serviceOne: {
+    name: 'St James Infirmary',
+    streetAddress: '234 Eddy Street',
+    city: 'San Francisco',
+    zipCode: '94102',
+    phone: '4155584944',
+    serviceType: 'health'
   }
 };

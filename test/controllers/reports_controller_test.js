@@ -2,7 +2,7 @@ const assert = require('assert');
 const request = require('supertest');
 const mongoose = require('mongoose');
 const app = require('../../app');
-const dummyReports = require('./dummy_reports');
+const dummyReports = require('./dummy_data');
 
 const Report = mongoose.model('report');
 

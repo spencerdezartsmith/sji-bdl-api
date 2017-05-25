@@ -31,6 +31,7 @@ module.exports = {
     name: 'St James Infirmary',
     streetAddress: '234 Eddy Street',
     city: 'San Francisco',
+    state: 'CA',
     zipCode: '94102',
     phone: '4155584944',
     serviceType: 'health'

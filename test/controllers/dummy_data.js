@@ -44,10 +44,13 @@ module.exports = {
     edited: true,
     editedReport: {
       title: 'Listen seeing you got ritualistic',
-      content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse molestie rutrum lorem.',
-      gender: 'male',
-      city: 'San Francisco'
+      content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse molestie rutrum lorem.'
     }
+  },
+
+  editedReportOne: {
+    title: 'Leave feathers behind',
+    content: 'Lorem ipsum blue linen, consectetur adipiscing elit. Suspendisse molestie rutrum lorem.'
   },
 
   serviceOne: {

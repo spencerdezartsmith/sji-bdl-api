@@ -7,7 +7,8 @@ const dummyReports = require('./dummy_data');
 const Report = mongoose.model('report');
 
 describe('Reports controller', () => {
-  it('Post to /api/reports creates a new report', (done) => {
+  // User created report
+  it('POST to /api/reports creates a new report', (done) => {
     Report.count().then(count => {
       request(app)
         .post('/api/reports')
@@ -21,6 +22,7 @@ describe('Reports controller', () => {
     });
   });
 
+  // Admin reads new unedited reports
   it('GET to /api/reports/new returns all the unedited reports', (done) => {
     const unEditedReport = new Report(dummyReports.reportOne);
     const editedReport = new Report(dummyReports.reportTwo);
@@ -36,4 +38,23 @@ describe('Reports controller', () => {
           });
       });
   });
+
+  it('POST to /api/reports/:id creates an edited subdocument', (done) => {
+    const unEditedReport = new Report(dummyReports.reportOne);
+    const edits = dummyReports.editedReportOne;
+
+    unEditedReport.save().then(() => {
+      request(app)
+        .post(`/api/reports/${unEditedReport._id}`)
+        .send(edits)
+        .end(() => {
+          Report.findById({ _id: unEditedReport._id })
+            .then((report) => {
+              assert(report.editedReport.title === 'Leave feathers behind');
+              assert(report.edited === true);
+              done();
+            });
+        });
+    });
+  })
 });

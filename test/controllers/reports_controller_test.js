@@ -39,6 +39,20 @@ describe('Reports controller', () => {
       });
   });
 
+  // Admin can read one report
+  it('GET to /api/reports/:id', (done) => {
+    const report = new Report(dummyReports.reportOne);
+
+    report.save().then(() => {
+      request(app)
+        .get(`/api/reports/${report._id}`)
+        .end((err, res) => {
+          assert(res.body._id.toString() === report._id.toString())
+          done();
+        });
+    });
+  });
+
   it('POST to /api/reports/:id creates an edited subdocument', (done) => {
     const unEditedReport = new Report(dummyReports.reportOne);
     const edits = dummyReports.editedReportOne;

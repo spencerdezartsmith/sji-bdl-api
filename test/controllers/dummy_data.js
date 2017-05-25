@@ -41,16 +41,14 @@ module.exports = {
       hair: 'blond hair',
       attributes: 'scar on left arm'
     },
-    edited: true
+    edited: true,
+    editedReport: {
+      title: 'Listen seeing you got ritualistic',
+      content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse molestie rutrum lorem.',
+      gender: 'male',
+      city: 'San Francisco'
+    }
   },
-
-	editedReportOne: {
-		title: 'Listen seeing you got ritualistic',
-    content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse molestie rutrum lorem.',
-    gender: 'male',
-    city: 'San Francisco',
-    geolocation: { type: 'Point', coordinates: [122.41, 37.77] }
-	},
 
   serviceOne: {
     name: 'St James Infirmary',

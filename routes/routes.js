@@ -14,4 +14,7 @@ module.exports = (app) => {
 
   // Admin create a new edited report
   app.post('/api/reports/:id', ReportsController.adminCreateEditedReport);
+
+  // Admin can delete an edited report
+  app.put('/api/reports/:id', ReportsController.adminDeleteEditedReport);
 };

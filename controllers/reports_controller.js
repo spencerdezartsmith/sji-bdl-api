@@ -27,5 +27,13 @@ module.exports = {
       .then(() => Report.findById({ _id: reportId }))
       .then(report => res.send(report))
       .catch(next);
+  },
+
+  adminReadOneReport(req, res, next) {
+    const reportId = req.params;
+
+    Report.findById(reportId.id)
+      .then(report => res.send(report))
+      .catch(next)
   }
 };

@@ -6,7 +6,7 @@ module.exports = {
     gender: 'female',
     date: '2017/01/01',
     assaultType: ['Robbery', 'Client drunk/high'],
-    assaultDescription: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse molestie rutrum lorem. Cras feugiat nulla augue, eget fringilla odio ultrices a. Duis eu bibendum metus.',
+    assaultDescription: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse molestie rutrum lorem. Green pants. Cras feugiat nulla augue, eget fringilla odio ultrices a. Duis eu bibendum metus.',
     perpetrator: {
       name: 'Bobby',
       phone: '5555555555',
@@ -19,6 +19,29 @@ module.exports = {
       hair: 'black hair',
       attributes: 'tattoo on right arm'
     }
+  },
+
+  reportTwo: {
+    city: 'Oakland',
+    locationType: 'Hotel/Motel',
+    geolocation: { type: 'Point', coordinates: [122.27, 37.80] },
+    gender: 'female',
+    date: '2016/12/01',
+    assaultType: ['Assault', 'Client drunk/high'],
+    assaultDescription: 'Lorem ipsum dolor rutrum blue jacket sit amet, consectetur adipiscing elit. Suspendisse molestie lorem. Cras feugiat nulla augue, eget fringilla odio ultrices a. Duis eu bibendum metus.',
+    perpetrator: {
+      name: 'Philip',
+      phone: '5555555555',
+      email: 'test2@test.com',
+      perpType: 'client',
+      gender: 'male',
+      age: '24',
+      race: 'white',
+      height: "5'11",
+      hair: 'blond hair',
+      attributes: 'scar on left arm'
+    },
+    edited: true
   },
 
 	editedReportOne: {

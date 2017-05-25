@@ -2,6 +2,7 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 const PointSchema = require('./point_schema');
 const PerpSchema = require('./perp_schema');
+const EditedReportSchema = require('./edited_report_schema');
 
 const ReportSchema = new Schema({
 	city: {
@@ -22,7 +23,7 @@ const ReportSchema = new Schema({
     type: Boolean,
     default: false
   },
-	editedReport: { type: Schema.Types.ObjectId, ref: 'editedReport'}
+  editedReport: EditedReportSchema
 });
 
 const Report = mongoose.model('report', ReportSchema);

@@ -11,6 +11,14 @@ const EditedReportSchema = new Schema({
 		type: String,
 		required: true
 	},
+  gender: {
+    type: String,
+    required: true
+  },
+  city: {
+    type: String,
+    required: true
+  },
 	geolocation: PointSchema,
 	report: { type: Schema.Types.ObjectId, ref: 'report' }
 });

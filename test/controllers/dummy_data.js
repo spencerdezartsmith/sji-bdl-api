@@ -4,7 +4,7 @@ module.exports = {
     locationType: 'Hotel/Motel',
     geolocation: { type: 'Point', coordinates: [122.41, 37.77] },
     gender: 'female',
-    date: '05/12/2017',
+    date: '2017/01/01',
     assaultType: ['Robbery', 'Client drunk/high'],
     assaultDescription: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse molestie rutrum lorem. Cras feugiat nulla augue, eget fringilla odio ultrices a. Duis eu bibendum metus.',
     perpetrator: {
@@ -23,7 +23,9 @@ module.exports = {
 
 	editedReportOne: {
 		title: 'Listen seeing you got ritualistic',
-    content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse molestie rutrum lorem.'
+    content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse molestie rutrum lorem.',
+    gender: 'male',
+    city: 'San Francisco',
     geolocation: { type: 'Point', coordinates: [122.41, 37.77] }
 	},
 

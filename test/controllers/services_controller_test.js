@@ -7,8 +7,10 @@ const dummyServices = require('./dummy_data');
 const Service = mongoose.model('service');
 
 describe('Services Controller', () => {
+  let newService;
+
   beforeEach(done => {
-    const newService = new Service(dummyServices.serviceTwo)
+    newService = new Service(dummyServices.serviceTwo)
     newService.save().then(() => done());
   });
 
@@ -24,7 +26,6 @@ describe('Services Controller', () => {
       });
   });
 
-
   it('GET to /api/services returns a list of services', (done) => {
     request(app)
       .get('/api/services')
@@ -32,5 +33,14 @@ describe('Services Controller', () => {
         assert(res.body.length === 1);
         done()
       })
+  });
+
+  it('GET to /api/services/id return a single service', (done) => {
+    request(app)
+      .get(`/api/services/${newService._id}`)
+      .end((err, res) => {
+        assert(res.body._id.toString() === newService._id.toString());
+        done();
+      });
   });
 });

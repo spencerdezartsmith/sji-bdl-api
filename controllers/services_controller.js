@@ -23,12 +23,20 @@ module.exports = {
       .catch(next);
   },
 
-  updateAService(req, res, next) {
+  updateService(req, res, next) {
     const serviceProps = req.body;
     const serviceId = req.params.id;
 
     Service.findOneAndUpdate({ _id: serviceId }, serviceProps)
       .then(() => Service.findById({ _id: serviceId }))
+      .then(service => res.send(service))
+      .catch(next);
+  },
+
+  removeService(req, res, next) {
+    const serviceId = req.params.id;
+
+    Service.findByIdAndRemove({ _id: serviceId })
       .then(service => res.send(service))
       .catch(next);
   }

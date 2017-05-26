@@ -29,5 +29,8 @@ module.exports = (app) => {
   app.get('/api/services/:id', ServicesController.getOneService);
 
   // Admin can update an existing service
-  app.put('/api/services/:id', ServicesController.updateAService);
+  app.put('/api/services/:id', ServicesController.updateService);
+
+  // Admin can delete a service
+  app.delete('/api/services/:id', ServicesController.removeService);
 };

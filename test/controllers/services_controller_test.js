@@ -57,4 +57,17 @@ describe('Services Controller', () => {
       });
   });
 
+  it('DELETE to /api/services/id', (done) => {
+    Service.count().then(count => {
+      request(app)
+      .delete(`/api/services/${newService._id}`)
+      .end((err, res) => {
+        Service.count().then(newCount => {
+          assert(count - 1 === newCount);
+          assert(res.body.name === newService.name);
+          done();
+        });
+      });
+    });
+  });
 });

@@ -1,4 +1,5 @@
 const ReportsController = require('../controllers/reports_controller');
+const ServicesController = require('../controllers/services_controller');
 
 module.exports = (app) => {
   app.get('/api', ReportsController.greeting);
@@ -17,4 +18,10 @@ module.exports = (app) => {
 
   // Admin can delete an edited report
   app.put('/api/reports/:id', ReportsController.adminDeleteEditedReport);
+
+  // Admin can add a new service
+  app.post('/api/services', ServicesController.addNewService);
+
+  // See a list of all services
+  app.get('/api/services', ServicesController.getAllServices);
 };

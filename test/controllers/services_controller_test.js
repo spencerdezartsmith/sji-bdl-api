@@ -21,7 +21,7 @@ describe('Services Controller', () => {
       .post('/api/services')
       .send(service)
       .end((err, res) => {
-        assert(res.body.name === 'St James Infirmary');
+        assert(res.body.phone === '4155584944');
         done();
       });
   });
@@ -43,4 +43,18 @@ describe('Services Controller', () => {
         done();
       });
   });
+
+  it('PUT to /api/services/id updates a single service', (done) => {
+    const serviceProps = { name: 'Hiatus Kyote' };
+
+    request(app)
+      .put(`/api/services/${newService._id}`)
+      .send(serviceProps)
+      .end((err, res) => {
+        assert(res.body._id.toString() === newService._id.toString());
+        assert(res.body.name === 'Hiatus Kyote');
+        done();
+      });
+  });
+
 });

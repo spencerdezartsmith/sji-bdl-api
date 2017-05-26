@@ -61,5 +61,15 @@ module.exports = {
     zipCode: '94102',
     phone: '4155584944',
     serviceType: 'health'
+  },
+
+  serviceTwo: {
+    name: 'General Service',
+    streetAddress: '112 Telegraph Street',
+    city: 'San Francisco',
+    state: 'CA',
+    zipCode: '94111',
+    phone: '4155583333',
+    serviceType: 'health'
   }
 };

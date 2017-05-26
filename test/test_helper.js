@@ -10,14 +10,11 @@ before(done => {
 });
 
 beforeEach(done => {
-  const { reports, edited_reports } = mongoose.connection.collections;
+  const { reports, services } = mongoose.connection.collections;
   reports.drop()
     .then(() => reports.ensureIndex({ 'geometry.coordinates': '2dsphere' }))
     .then(() => {
-      edited_reports.drop()
-      .then(() => edited_reports.ensureIndex({ 'geometry.coordinates': '2dsphere' }))
-      .then(() => done())
-      .catch(() => done());
+      services.drop()
     })
     .then(() => done())
     .catch(() => done());

@@ -3,7 +3,7 @@ const ServicesController = require('../controllers/services_controller');
 
 module.exports = (app) => {
   app.get('/api', ReportsController.greeting);
-
+  
   // User created reports
   app.post('/api/reports', ReportsController.userCreateReport);
 
@@ -22,6 +22,9 @@ module.exports = (app) => {
   // Admin can add a new service
   app.post('/api/services', ServicesController.addNewService);
 
-  // See a list of all services
+  // All can access a list of all services
   app.get('/api/services', ServicesController.getAllServices);
+
+  // All can access a single services
+  app.get('/api/services/:id', ServicesController.getOneService);
 };

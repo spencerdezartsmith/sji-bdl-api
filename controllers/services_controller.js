@@ -6,12 +6,20 @@ module.exports = {
 
     Service.create(serviceProps)
       .then(service => res.send(service))
-      .catch(next) 
+      .catch(next)
   },
 
   getAllServices(req, res, next) {
     Service.find({})
       .then(services => res.send(services))
+      .catch(next);
+  },
+
+  getOneService(req, res, next) {
+    const serviceId = req.params.id;
+
+    Service.findOne({ _id: serviceId})
+      .then(service => res.send(service))
       .catch(next);
   }
 };

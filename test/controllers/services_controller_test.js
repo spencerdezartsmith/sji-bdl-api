@@ -7,6 +7,11 @@ const dummyServices = require('./dummy_data');
 const Service = mongoose.model('service');
 
 describe('Services Controller', () => {
+  beforeEach(done => {
+    const newService = new Service(dummyServices.serviceTwo)
+    newService.save().then(() => done());
+  });
+
   it('POST to /api/services can create a new service', (done) => {
     const service = dummyServices.serviceOne;
 
@@ -16,11 +21,16 @@ describe('Services Controller', () => {
       .end((err, res) => {
         assert(res.body.name === 'St James Infirmary');
         done();
-      })
+      });
   });
 
 
-  it('GET to /api/services returns a list of services', () => {
-
+  it('GET to /api/services returns a list of services', (done) => {
+    request(app)
+      .get('/api/services')
+      .end((err, res) => {
+        assert(res.body.length === 1);
+        done()
+      })
   });
 });

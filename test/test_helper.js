@@ -13,7 +13,9 @@ beforeEach(done => {
   const { reports, services } = mongoose.connection.collections;
   reports.drop()
     .then(() => {
-      reports.ensureIndex({ 'editedReport.content': 'text' })
+      reports.ensureIndex({ 'editedReport.content': 'text',
+                            'editedReport.title': 'text'
+                          })
       reports.ensureIndex({ 'geolocation.coordinates': '2dsphere' })
     })
     .then(() => services.drop())

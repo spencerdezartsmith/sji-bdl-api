@@ -1,4 +1,5 @@
 const Service = require('../models/service');
+const helpers = require('./helper_functions');
 
 module.exports = {
   addNewService(req, res, next) {
@@ -39,5 +40,14 @@ module.exports = {
     Service.findByIdAndRemove({ _id: serviceId })
       .then(service => res.send(service))
       .catch(next);
+  },
+
+  searchServices(req, res, next) {
+    const searchCriteria = req.query;
+
+    Service.find({ $and: [helpers.buildQuery(searchCriteria)] })
+    .then(results => res.send(results))
+    .catch(next);
   }
+
 };

@@ -25,6 +25,9 @@ module.exports = (app) => {
   // All can access a list of all services
   app.get('/api/services', ServicesController.getAllServices);
 
+  // User can return services with specific parameters
+  app.get('/api/services/search', ServicesController.searchServices);
+  
   // All can access a single services
   app.get('/api/services/:id', ServicesController.getOneService);
 
@@ -33,4 +36,5 @@ module.exports = (app) => {
 
   // Admin can delete a service
   app.delete('/api/services/:id', ServicesController.removeService);
+
 };

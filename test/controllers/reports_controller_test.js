@@ -87,4 +87,17 @@ describe('Reports controller', () => {
         });
     });
   });
+
+  it('GET to /api/reports/search searches based on keywords', (done) => {
+    const report = new Report(dummyReports.reportTwo);
+
+    report.save().then(() => {
+      request(app)
+        .get('/api/reports/search?keywords=Ritualistic')
+        .end((err, res) => {
+          assert(/Ritualistic/i.test(res.body[0].editedReport.title));
+          done();
+        });
+    });
+  });
 });

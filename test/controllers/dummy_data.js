@@ -28,7 +28,7 @@ module.exports = {
     gender: 'female',
     date: '2016/12/01',
     assaultType: ['Assault', 'Client drunk/high'],
-    assaultDescription: 'Lorem ipsum dolor rutrum blue jacket sit amet, consectetur adipiscing elit. Suspendisse molestie lorem. Cras feugiat nulla augue, eget fringilla odio ultrices a. Duis eu bibendum metus.',
+    assaultDescription: 'Lorem ipsum dolor rutrum blue jacket philipa sit amet, consectetur adipiscing elit. Suspendisse molestie lorem. Cras feugiat nulla augue, eget fringilla odio ultrices a. Duis eu bibendum metus.',
     perpetrator: {
       name: 'Philip',
       phone: '5555555555',
@@ -44,7 +44,7 @@ module.exports = {
     edited: true,
     editedReport: {
       title: 'Listen seeing you got ritualistic',
-      content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse molestie rutrum lorem.'
+      content: 'Lorem ipsum dolor sit amet, consectetur blue light elit. Suspendisse molestie rutrum lorem.'
     }
   },
 

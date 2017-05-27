@@ -26,11 +26,13 @@ const ServiceSchema = new Schema({
     type: String,
     required: true
   },
-  serviceType: {
+  type: {
     type: String,
     required: true
   }
 });
+
+ServiceSchema.index({ 'name': 'text' });
 
 const Service = mongoose.model('service', ServiceSchema);
 

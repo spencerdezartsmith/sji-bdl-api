@@ -26,6 +26,11 @@ const ReportSchema = new Schema({
   editedReport: EditedReportSchema
 });
 
+ReportSchema.index(
+  { 'editedReport.content': 'text' },
+  { 'geolocation.coordinates': '2dsphere' }
+);
+
 const Report = mongoose.model('report', ReportSchema);
 
 module.exports = Report;

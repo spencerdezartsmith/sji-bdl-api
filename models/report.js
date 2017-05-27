@@ -27,7 +27,7 @@ const ReportSchema = new Schema({
 });
 
 ReportSchema.index(
-  { 'editedReport.content': 'text' },
+  { 'editedReport.content': 'text', 'editedReport.title': 'text' },
   { 'geolocation.coordinates': '2dsphere' }
 );
 

@@ -1,4 +1,5 @@
 const Report = require('../models/report');
+const helpers = require('./helper_functions');
 
 module.exports = {
 	greeting(req, res) {
@@ -43,6 +44,14 @@ module.exports = {
     Report.update({ _id: reportId }, { $set: {edited: false }, $unset: { editedReport: 1 }})
       .then(() => Report.findById({ _id: reportId }))
       .then(report => res.send(report))
+      .catch(next);
+  },
+
+  searchEditedReports(req, res, next) {
+    const criteria = req.query;
+    
+    Report.find(helpers.buildQuery(criteria))
+      .then((reports) => res.send(reports))
       .catch(next);
   }
 };

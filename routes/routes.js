@@ -10,6 +10,9 @@ module.exports = (app) => {
   // Admin read all new unedited reports
   app.get('/api/reports/new', ReportsController.adminReadNewReports);
 
+  // User can search edited reports using keywords
+  app.get('/api/reports/search', ReportsController.searchEditedReports);
+
   // Admin can read one report
   app.get('/api/reports/:id', ReportsController.adminReadOneReport);
 
@@ -27,7 +30,7 @@ module.exports = (app) => {
 
   // User can return services with specific parameters
   app.get('/api/services/search', ServicesController.searchServices);
-  
+
   // All can access a single services
   app.get('/api/services/:id', ServicesController.getOneService);
 

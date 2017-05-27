@@ -60,16 +60,16 @@ module.exports = {
     state: 'CA',
     zipCode: '94102',
     phone: '4155584944',
-    serviceType: 'health'
+    type: 'health'
   },
 
   serviceTwo: {
     name: 'General Service',
     streetAddress: '112 Telegraph Street',
-    city: 'San Francisco',
+    city: 'Oakland',
     state: 'CA',
     zipCode: '94111',
     phone: '4155583333',
-    serviceType: 'health'
+    type: 'legal'
   }
 };

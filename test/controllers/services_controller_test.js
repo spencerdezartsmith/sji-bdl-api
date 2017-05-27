@@ -70,4 +70,14 @@ describe('Services Controller', () => {
       });
     });
   });
+
+  it('GET to /api/services/search returns matches to certain criteria', (done) => {
+    request(app)
+      .get('/api/services/search?city=Oakland&keywords=general')
+      .end((err, res) => {
+        assert(res.body.length === 1);
+        assert(/general/i.test(res.body[0].name));
+        done();
+      });
+  });
 });

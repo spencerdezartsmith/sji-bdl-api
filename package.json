@@ -22,7 +22,8 @@
     "express": "^4.15.3",
     "mocha": "^3.4.2",
     "mongoose": "^4.10.2",
-    "supertest": "^3.0.0"
+    "supertest": "^3.0.0",
+    "validator": "^7.0.0"
   },
   "devDependencies": {
     "nodemon": "^1.11.0"

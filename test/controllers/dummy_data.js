@@ -71,5 +71,10 @@ module.exports = {
     zipCode: '94111',
     phone: '4155583333',
     type: 'legal'
+  },
+
+  adminUserOne: {
+    email: 'test@test.com',
+    password: '123456'
   }
 };

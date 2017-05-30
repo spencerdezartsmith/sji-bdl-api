@@ -15,6 +15,9 @@ module.exports = (app) => {
   // Admin can logout
   app.delete('/api/admins/logout', authenticate, AdminsController.logout);
 
+  // Admin can update login details
+  app.put('/api/admins/update', authenticate, AdminsController.updateLoginDetails);
+
   // User created reports
   app.post('/api/reports', ReportsController.userCreateReport);
 

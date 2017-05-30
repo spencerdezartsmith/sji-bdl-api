@@ -40,6 +40,26 @@ module.exports = {
       });
   },
 
+  updateLoginDetails(req, res, next) {
+    const updateProps = req.body;
+    Admin.findOne({ 'tokens.token': req.headers['x-auth'] })
+      .then((admin) => {
+        if (updateProps.email) {
+          admin.set('email', updateProps.email);
+        };
+
+        if (updateProps.password) {
+          admin.set('password', updateProps.password);
+        };
+
+        admin.save()
+          .then((updatedAdmin) => {
+            res.send(updatedAdmin);
+          })
+      })
+      .catch(next)
+  },
+
   testing(req, res, next) {
     res.send(req.admin)
   }

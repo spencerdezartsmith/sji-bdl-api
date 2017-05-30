@@ -10,7 +10,7 @@ before(done => {
 });
 
 beforeEach(done => {
-  const { reports, services } = mongoose.connection.collections;
+  const { reports, services, admins } = mongoose.connection.collections;
   reports.drop()
     .then(() => {
       reports.ensureIndex({ 'editedReport.content': 'text',
@@ -20,6 +20,7 @@ beforeEach(done => {
     })
     .then(() => services.drop())
     .then(() => services.ensureIndex({ name: 'text' }))
+    .then(() => admins.drop())
     .then(() => done())
     .catch(() => done());
 });

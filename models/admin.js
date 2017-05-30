@@ -64,13 +64,30 @@ AdminSchema.statics.findByToken = function (token) {
     return new Promise((resolve, reject) => {
       reject()
     });
-  }
+  };
 
   return Admin.findOne({
     '_id': decoded._id,
     'tokens.token': token,
     'tokens.access': 'auth'
   });
+};
+
+AdminSchema.statics.findByCredentials = function (email, password) {
+  const Admin = this;
+
+  return Admin.findOne({ email })
+    .then((admin) => {
+      if (!admin) {
+        return Promise.reject();
+      }
+
+      return new Promise((resolve, reject) => {
+        bcrypt.compare(password, admin.password, (err, res) => {
+          res ? resolve(admin) : reject();
+        })
+      })
+    });
 };
 
 AdminSchema.pre('save', function (next) {

@@ -29,6 +29,17 @@ module.exports = {
       });
   },
 
+  logout(req, res, next) {
+    req.admin.removeToken(req.token)
+      .then(() => {
+        res.status(200).send();
+      })
+      .catch(() => {
+        res.status(400).send();
+        next();
+      });
+  },
+
   testing(req, res, next) {
     res.send(req.admin)
   }

@@ -54,6 +54,16 @@ AdminSchema.methods.generateAuthToken = function () {
   })
 };
 
+AdminSchema.methods.removeToken = function (token) {
+  const adminUser = this;
+
+  return adminUser.update({
+    $pull: {
+      tokens: { token }
+    }
+  });
+};
+
 AdminSchema.statics.findByToken = function (token) {
   const Admin = this;
   let decoded;

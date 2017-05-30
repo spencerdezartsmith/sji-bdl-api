@@ -12,6 +12,9 @@ module.exports = (app) => {
   // Admin can login
   app.post('/api/admins/login', AdminsController.login);
 
+  // Admin can logout
+  app.delete('/api/admins/logout', authenticate, AdminsController.logout);
+
   // User created reports
   app.post('/api/reports', ReportsController.userCreateReport);
 

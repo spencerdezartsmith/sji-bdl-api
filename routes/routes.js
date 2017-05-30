@@ -1,12 +1,16 @@
 const ReportsController = require('../controllers/reports_controller');
 const ServicesController = require('../controllers/services_controller');
 const AdminsController = require('../controllers/admins_controller');
+const authenticate = require('../middleware/authenticate');
 
 module.exports = (app) => {
   app.get('/api', ReportsController.greeting);
 
   // Create a new admin account
   app.post('/api/admins/new', AdminsController.createNewAdmin);
+
+  // Admin can login
+  app.post('/api/admins/login', AdminsController.login);
 
   // User created reports
   app.post('/api/reports', ReportsController.userCreateReport);
@@ -44,4 +48,5 @@ module.exports = (app) => {
   // Admin can delete a service
   app.delete('/api/services/:id', ServicesController.removeService);
 
+  app.get('/users/me', authenticate, AdminsController.testing);
 };

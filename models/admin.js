@@ -3,6 +3,7 @@ const Schema = mongoose.Schema;
 const validator = require('validator');
 const jwt = require('jsonwebtoken');
 const _ = require('lodash');
+const bcrypt = require('bcryptjs');
 
 const AdminSchema = new Schema({
   email: {
@@ -52,6 +53,41 @@ AdminSchema.methods.generateAuthToken = function () {
     return token;
   })
 };
+
+AdminSchema.statics.findByToken = function (token) {
+  const Admin = this;
+  let decoded;
+
+  try {
+    decoded = jwt.verify(token, 'abc123');
+  } catch (error) {
+    return new Promise((resolve, reject) => {
+      reject()
+    });
+  }
+
+  return Admin.findOne({
+    '_id': decoded._id,
+    'tokens.token': token,
+    'tokens.access': 'auth'
+  });
+};
+
+AdminSchema.pre('save', function (next) {
+  const admin = this;
+  let password = admin.password;
+
+  if (admin.isModified('password')) {
+    bcrypt.genSalt(10, (err, salt) => {
+      bcrypt.hash(password, salt, (err, hash) => {
+        admin.password = hash;
+        next();
+      })
+    })
+  } else {
+    next();
+  };
+});
 
 const Admin = mongoose.model('admin', AdminSchema);
 

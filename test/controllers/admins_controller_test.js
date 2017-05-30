@@ -75,6 +75,18 @@ describe('Admins Controller', () => {
       });
   });
 
+  it('DELETE /api/admins/logout logs a user out deleting the token', (done) => {
+    const token = dummyAdmins.admins[0].tokens[0].token;
+
+    request(app)
+      .delete('/api/admins/logout')
+      .set('x-auth', token)
+      .end((err, res) => {
+        assert(200);
+        done();
+      });
+  });
+
 
   // Testing purposes
   it('GET /users/me returns admin if authenticated', (done) => {

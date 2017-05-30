@@ -5,9 +5,10 @@ const app = require('../../app');
 const dummyReports = require('./dummy_data');
 
 const Report = mongoose.model('report');
+const adminToken = dummyReports.admins[0].tokens[0].token;
 
 describe('Reports controller', () => {
-  // User created report
+  // User can create a report
   it('POST to /api/reports creates a new report', (done) => {
     Report.count().then(count => {
       request(app)
@@ -31,6 +32,7 @@ describe('Reports controller', () => {
       .then(() => {
         request(app)
           .get('/api/reports/new')
+          .set('x-auth', adminToken)
           .end((err, res) => {
             assert(res.body[0]._id.toString() === unEditedReport._id.toString());
             assert(res.body[0].edited === false);
@@ -46,6 +48,7 @@ describe('Reports controller', () => {
     report.save().then(() => {
       request(app)
         .get(`/api/reports/${report._id}`)
+        .set('x-auth', adminToken)
         .end((err, res) => {
           assert(res.body._id.toString() === report._id.toString())
           done();
@@ -62,6 +65,7 @@ describe('Reports controller', () => {
       request(app)
         .post(`/api/reports/${unEditedReport._id}`)
         .send(edits)
+        .set('x-auth', adminToken)
         .end(() => {
           Report.findById({ _id: unEditedReport._id })
             .then((report) => {
@@ -80,6 +84,7 @@ describe('Reports controller', () => {
     report.save().then(() => {
       request(app)
         .put(`/api/reports/${report._id}`)
+        .set('x-auth', adminToken)
         .end((err, res) => {
           assert(res.body.edited === false);
           assert(res.body.editedReport === undefined);

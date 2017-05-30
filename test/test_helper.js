@@ -1,4 +1,7 @@
 const mongoose = require('mongoose');
+const dummyAdmins = require('./controllers/dummy_data');
+
+const Admin = mongoose.model('admin');
 
 before(done => {
 	mongoose.connect('mongodb://localhost/sji_bdl_test');
@@ -24,3 +27,14 @@ beforeEach(done => {
     .then(() => done())
     .catch(() => done());
 });
+
+beforeEach(done => {
+  Admin.remove({})
+    .then(() => {
+      let adminOne = new Admin(dummyAdmins.admins[0]);
+      let adminTwo = new Admin(dummyAdmins.admins[1]);
+
+      return Promise.all([adminOne.save(), adminTwo.save()])
+    })
+    .then(() => done());
+})

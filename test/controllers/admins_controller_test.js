@@ -7,16 +7,16 @@ const dummyAdmins = require('./dummy_data');
 
 const Admin = mongoose.model('admin');
 
-beforeEach(done => {
-  Admin.remove({})
-    .then(() => {
-      let adminOne = new Admin(dummyAdmins.admins[0]);
-      let adminTwo = new Admin(dummyAdmins.admins[1]);
-
-      return Promise.all([adminOne.save(), adminTwo.save()])
-    })
-    .then(() => done());
-})
+// beforeEach(done => {
+//   Admin.remove({})
+//     .then(() => {
+//       let adminOne = new Admin(dummyAdmins.admins[0]);
+//       let adminTwo = new Admin(dummyAdmins.admins[1]);
+//
+//       return Promise.all([adminOne.save(), adminTwo.save()])
+//     })
+//     .then(() => done());
+// })
 
 describe('Admins Controller', () => {
   it('POST to /api/admin/new creates a new admin', (done) => {

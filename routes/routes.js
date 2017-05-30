@@ -18,26 +18,26 @@ module.exports = (app) => {
   // Admin can update login details
   app.put('/api/admins/update', authenticate, AdminsController.updateLoginDetails);
 
-  // User created reports
+  // User can create a reports
   app.post('/api/reports', ReportsController.userCreateReport);
 
   // Admin read all new unedited reports
-  app.get('/api/reports/new', ReportsController.adminReadNewReports);
+  app.get('/api/reports/new', authenticate, ReportsController.adminReadNewReports);
 
   // User can search edited reports using keywords
   app.get('/api/reports/search', ReportsController.searchEditedReports);
 
   // Admin can read one report
-  app.get('/api/reports/:id', ReportsController.adminReadOneReport);
+  app.get('/api/reports/:id', authenticate, ReportsController.adminReadOneReport);
 
   // Admin create a new edited report
-  app.post('/api/reports/:id', ReportsController.adminCreateEditedReport);
+  app.post('/api/reports/:id', authenticate, ReportsController.adminCreateEditedReport);
 
   // Admin can delete an edited report
-  app.put('/api/reports/:id', ReportsController.adminDeleteEditedReport);
+  app.put('/api/reports/:id', authenticate, ReportsController.adminDeleteEditedReport);
 
   // Admin can add a new service
-  app.post('/api/services', ServicesController.addNewService);
+  app.post('/api/services', authenticate, ServicesController.addNewService);
 
   // All can access a list of all services
   app.get('/api/services', ServicesController.getAllServices);
@@ -49,10 +49,10 @@ module.exports = (app) => {
   app.get('/api/services/:id', ServicesController.getOneService);
 
   // Admin can update an existing service
-  app.put('/api/services/:id', ServicesController.updateService);
+  app.put('/api/services/:id', authenticate, ServicesController.updateService);
 
   // Admin can delete a service
-  app.delete('/api/services/:id', ServicesController.removeService);
+  app.delete('/api/services/:id', authenticate, ServicesController.removeService);
 
   app.get('/users/me', authenticate, AdminsController.testing);
 };

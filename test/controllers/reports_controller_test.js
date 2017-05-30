@@ -53,7 +53,7 @@ describe('Reports controller', () => {
     });
   });
 
-  //Admin can create an edited report or edit an edited report
+  // Admin can create an edited report or edit an edited report
   it('POST to /api/reports/:id creates/edits an edited subdocument', (done) => {
     const unEditedReport = new Report(dummyReports.reportOne);
     const edits = dummyReports.editedReportOne;
@@ -88,6 +88,7 @@ describe('Reports controller', () => {
     });
   });
 
+  // A User can search reports using keywords
   it('GET to /api/reports/search searches based on keywords', (done) => {
     const report = new Report(dummyReports.reportTwo);
 
@@ -99,5 +100,5 @@ describe('Reports controller', () => {
           done();
         });
     });
-  });
+  })
 });

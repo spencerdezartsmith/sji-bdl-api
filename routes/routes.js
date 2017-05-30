@@ -1,8 +1,12 @@
 const ReportsController = require('../controllers/reports_controller');
 const ServicesController = require('../controllers/services_controller');
+const AdminsController = require('../controllers/admins_controller');
 
 module.exports = (app) => {
   app.get('/api', ReportsController.greeting);
+
+  // Create a new admin account
+  app.post('/api/admins/new', AdminsController.createNewAdmin);
 
   // User created reports
   app.post('/api/reports', ReportsController.userCreateReport);

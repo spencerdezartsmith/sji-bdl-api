@@ -75,6 +75,23 @@ describe('Admins Controller', () => {
       });
   });
 
+  it('PUT /api/admins/update', (done) => {
+    const id = dummyAdmins.admins[0]._id.toString();
+    const token = dummyAdmins.admins[0].tokens[0].token;
+    const newEmail = { email: 'updateTest@test.com' };
+
+    request(app)
+      .put('/api/admins/update')
+      .send(newEmail)
+      .set('x-auth', token)
+      .end((err, res) => {
+        assert(200);
+        assert(id === res.body._id.toString());
+        assert(res.body.email === newEmail.email);
+        done();
+      });
+  });
+
   it('DELETE /api/admins/logout logs a user out deleting the token', (done) => {
     const token = dummyAdmins.admins[0].tokens[0].token;
 

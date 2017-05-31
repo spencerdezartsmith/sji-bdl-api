@@ -4,7 +4,7 @@
   "description": "Api for SJ Infirmary Bad Date List App",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon index.js",
+    "start": "node index.js",
     "test": "NODE_ENV=test nodemon --exec 'mocha --recursive -R min || exit 1'"
   },
   "engines": {

@@ -7,7 +7,7 @@ const app = express();
 // Change to ES6 Promise library
 mongoose.Promise = global.Promise;
 if (process.env.NODE_ENV !== 'test') {
-  mongoose.connect('mongodb://localhost/sji_bdl')
+  mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/sji_bdl')
 };
 
 app.use(bodyParser.json());

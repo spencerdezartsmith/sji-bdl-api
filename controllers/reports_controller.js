@@ -6,6 +6,17 @@ module.exports = {
 		res.send({ hello: 'world' });
 	},
 
+  nearMe(req, res, next) {
+    const { lng, lat } = req.query;
+
+    Report.geoNear(
+      { type: 'Point', coordinates: [parseFloat(lng), parseFloat(lat)] },
+      { spherical: true, maxDistance: 2000 }
+    )
+    .then((reports) => res.send(reports))
+    .catch(next);
+  },
+
 	userCreateReport(req, res, next) {
 		const reportProps = req.body;
 
@@ -55,5 +66,5 @@ module.exports = {
     Report.find(helpers.buildQuery(criteria))
       .then((reports) => res.send(reports))
       .catch(next);
-  }
+  },
 };

@@ -99,9 +99,9 @@ describe('Reports controller', () => {
 
     report.save().then(() => {
       request(app)
-        .get('/api/reports/search?keywords=Ritualistic')
+        .get('/api/reports/search?keywords=Suspendisse')
         .end((err, res) => {
-          assert(/Ritualistic/i.test(res.body[0].editedReport.title));
+          assert(/Suspendisse/i.test(res.body[0].editedReport.content));
           done();
         });
     });

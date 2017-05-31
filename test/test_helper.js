@@ -23,7 +23,6 @@ beforeEach(done => {
     })
     .then(() => services.drop())
     .then(() => services.ensureIndex({ name: 'text' }))
-    // .then(() => admins.drop())
     .then(() => done())
     .catch(() => done());
 });

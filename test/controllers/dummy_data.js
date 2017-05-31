@@ -9,7 +9,7 @@ module.exports = {
 	reportOne: {
     city: 'San Francisco',
     locationType: 'Hotel/Motel',
-    geolocation: { type: 'Point', coordinates: [122.41, 37.77] },
+    geolocation: { type: 'Point', coordinates: [-122.41, 37.77] },
     gender: 'female',
     date: '2017/01/01',
     assaultType: ['Robbery', 'Client drunk/high'],
@@ -52,6 +52,60 @@ module.exports = {
     editedReport: {
       title: 'Listen seeing you got ritualistic',
       content: 'Lorem ipsum dolor sit amet, consectetur blue light elit. Suspendisse molestie rutrum lorem.'
+    }
+  },
+
+  reportThree: {
+    city: 'San Francisco',
+    locationType: 'House',
+    geolocation: { type: 'Point', coordinates: [122.4194, 37.774] },
+    gender: 'female',
+    date: '2016/12/01',
+    assaultType: ['Assault', 'Client drunk/high'],
+    assaultDescription: 'Lorem ipsum dolor rutrum blue jacket philipa sit amet, consectetur adipiscing elit. Suspendisse molestie lorem. Cras feugiat nulla augue, eget fringilla odio ultrices a. Duis eu bibendum metus.',
+    perpetrator: {
+      name: 'Philip',
+      phone: '5555555555',
+      email: 'test2@test.com',
+      perpType: 'client',
+      gender: 'male',
+      age: '24',
+      race: 'white',
+      height: "5'11",
+      hair: 'blond hair',
+      attributes: 'scar on left arm'
+    },
+    edited: true,
+    editedReport: {
+      title: 'Your ex is a waste man',
+      content: 'Dempta enim aeternitate nihilo beatior Iuppiter quam Epicurus; Equidem etiam Epicurum, in physicis quidem, Democriteum puto. Illud dico, ea, quae dicat, praeclare inter se cohaerere. Huius ego nunc auctoritatem sequens idem faciam. Ad eas enim res ab Epicuro praecepta dantur. Nam illud vehementer repugnat, eundem beatum esse et multis malis oppressum.'
+    }
+  },
+
+  reportFour: {
+    city: 'Oakland',
+    locationType: 'Hotel/Motel',
+    geolocation: { type: 'Point', coordinates: [122.2729, 37.8022] },
+    gender: 'female',
+    date: '2016/12/01',
+    assaultType: ['Assault', 'Client drunk/high'],
+    assaultDescription: 'Lorem ipsum dolor rutrum blue jacket philipa sit amet, consectetur adipiscing elit. Suspendisse molestie lorem. Cras feugiat nulla augue, eget fringilla odio ultrices a. Duis eu bibendum metus.',
+    perpetrator: {
+      name: 'Philip',
+      phone: '5555555555',
+      email: 'test2@test.com',
+      perpType: 'client',
+      gender: 'male',
+      age: '24',
+      race: 'white',
+      height: "5'11",
+      hair: 'blond hair',
+      attributes: 'scar on left arm'
+    },
+    edited: true,
+    editedReport: {
+      title: 'I might just say how I feel.',
+      content: 'Qui igitur convenit ab alia voluptate dicere naturam proficisci, in alia summum bonum ponere? Illud quaero, quid ei, qui in voluptate summum bonum ponat, consentaneum sit dicere. Nam, ut sint illa vendibiliora, haec uberiora certe sunt.'
     }
   },
 

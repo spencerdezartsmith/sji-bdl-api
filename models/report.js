@@ -30,14 +30,6 @@ ReportSchema.index({ 'editedReport.content': 'text', 'editedReport.title': 'text
 
 const Report = mongoose.model('report', ReportSchema);
 
-Report.on('index', function(err) {
-    if (err) {
-        console.error('User index error: %s', err);
-    } else {
-        console.info('User indexing complete');
-    }
-});
-
-mongoose.set('debug', true);
+// mongoose.set('debug', true);
 
 module.exports = Report;

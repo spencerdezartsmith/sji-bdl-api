@@ -6,6 +6,24 @@ const authenticate = require('../middleware/authenticate');
 module.exports = (app) => {
   app.get('/api', ReportsController.greeting);
 
+  // User can create a reports
+  app.post('/api/reports', ReportsController.userCreateReport);
+
+  // User can search edited reports using keywords
+  app.get('/api/reports/search', ReportsController.searchEditedReports);
+
+  // User can search edited reports by 2k radius
+  app.get('/api/reports/near', ReportsController.nearMe);
+
+  // Users can access a list of all services
+  app.get('/api/services', ServicesController.getAllServices);
+
+  // Users can return services with specific parameters
+  app.get('/api/services/search', ServicesController.searchServices);
+
+  // Users can access a single services
+  app.get('/api/services/:id', ServicesController.getOneService);
+
   // Create a new admin account
   app.post('/api/admins/new', AdminsController.createNewAdmin);
 
@@ -18,14 +36,8 @@ module.exports = (app) => {
   // Admin can update login details
   app.put('/api/admins/update', authenticate, AdminsController.updateLoginDetails);
 
-  // User can create a reports
-  app.post('/api/reports', ReportsController.userCreateReport);
-
   // Admin read all new unedited reports
   app.get('/api/reports/new', authenticate, ReportsController.adminReadNewReports);
-
-  // User can search edited reports using keywords
-  app.get('/api/reports/search', ReportsController.searchEditedReports);
 
   // Admin can read one report
   app.get('/api/reports/:id', authenticate, ReportsController.adminReadOneReport);
@@ -39,20 +51,12 @@ module.exports = (app) => {
   // Admin can add a new service
   app.post('/api/services', authenticate, ServicesController.addNewService);
 
-  // All can access a list of all services
-  app.get('/api/services', ServicesController.getAllServices);
-
-  // User can return services with specific parameters
-  app.get('/api/services/search', ServicesController.searchServices);
-
-  // All can access a single services
-  app.get('/api/services/:id', ServicesController.getOneService);
-
   // Admin can update an existing service
   app.put('/api/services/:id', authenticate, ServicesController.updateService);
 
   // Admin can delete a service
   app.delete('/api/services/:id', authenticate, ServicesController.removeService);
 
+  // Testing authentication
   app.get('/users/me', authenticate, AdminsController.testing);
 };

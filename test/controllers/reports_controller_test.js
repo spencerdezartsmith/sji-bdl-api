@@ -105,5 +105,21 @@ describe('Reports controller', () => {
           done();
         });
     });
-  })
+  });
+
+  it('Get to /api/reports/near will return reports within 2k radius', (done) => {
+    const farReport = new Report(dummyReports.reportThree);
+    const closeRepot = new Report(dummyReports.reportFour);
+
+    Promise.all([closeRepot.save(), farReport.save()])
+      .then(() => {
+        request(app)
+          .get('/api/reports/near?lng=122.2741&lat=37.8015')
+          .end((err, res) => {
+            assert(res.body.length === 1);
+            assert(res.body[0].obj.city === 'Oakland');
+            done();
+          });
+      });
+  });
 });

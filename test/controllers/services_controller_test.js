@@ -5,6 +5,7 @@ const app = require('../../app');
 const dummyServices = require('./dummy_data');
 
 const Service = mongoose.model('service');
+const adminToken = dummyServices.admins[0].tokens[0].token;
 
 describe('Services Controller', () => {
   let newService;
@@ -20,6 +21,7 @@ describe('Services Controller', () => {
     request(app)
       .post('/api/services')
       .send(service)
+      .set('x-auth', adminToken)
       .end((err, res) => {
         assert(res.body.phone === '4155584944');
         done();
@@ -50,6 +52,7 @@ describe('Services Controller', () => {
     request(app)
       .put(`/api/services/${newService._id}`)
       .send(serviceProps)
+      .set('x-auth', adminToken)
       .end((err, res) => {
         assert(res.body._id.toString() === newService._id.toString());
         assert(res.body.name === 'Hiatus Kyote');
@@ -61,6 +64,7 @@ describe('Services Controller', () => {
     Service.count().then(count => {
       request(app)
       .delete(`/api/services/${newService._id}`)
+      .set('x-auth', adminToken)
       .end((err, res) => {
         Service.count().then(newCount => {
           assert(count - 1 === newCount);

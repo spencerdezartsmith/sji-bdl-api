@@ -1,3 +1,10 @@
+const Admin = require('../../models/admin');
+const { ObjectID } = require('mongodb');
+const jwt = require('jsonwebtoken');
+
+const adminOne = new ObjectID();
+const adminTwo = new ObjectID();
+
 module.exports = {
 	reportOne: {
     city: 'San Francisco',
@@ -71,5 +78,30 @@ module.exports = {
     zipCode: '94111',
     phone: '4155583333',
     type: 'legal'
-  }
+  },
+
+  adminExampleOne: {
+    email: 'testingAuth@test.com',
+    password: '123456'
+  },
+
+  adminBrokenEmail: {
+    email: 'testing',
+    password: '123456'
+  },
+
+  admins: [{
+    _id: adminOne,
+    email: 'spencer@test.com',
+    password: 'adminOnePass',
+    tokens: [{
+      access: 'auth',
+      token: jwt.sign({ _id: adminOne, access: 'auth' }, 'abc123').toString()
+    }]
+  },
+  {
+    _id: adminTwo,
+    email: 'test@test.com',
+    password: '123456'
+  }]
 };

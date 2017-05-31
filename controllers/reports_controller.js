@@ -26,7 +26,9 @@ module.exports = {
 
     Report.findByIdAndUpdate(reportId, { $set: { editedReport: editProps, edited: true }})
       .then(() => Report.findById({ _id: reportId }))
-      .then(report => res.send(report))
+      .then(report => {
+        res.send(report)
+      })
       .catch(next);
   },
 
@@ -49,7 +51,7 @@ module.exports = {
 
   searchEditedReports(req, res, next) {
     const criteria = req.query;
-    
+
     Report.find(helpers.buildQuery(criteria))
       .then((reports) => res.send(reports))
       .catch(next);

@@ -45,7 +45,7 @@ AdminSchema.methods.toJSON = function () {
 AdminSchema.methods.generateAuthToken = function () {
   const adminUser = this;
   const access = 'auth';
-  const token = jwt.sign({ _id: adminUser._id.toHexString(), access }, 'abc123').toString();
+  const token = jwt.sign({ _id: adminUser._id.toHexString(), access }, process.env.JWT_SECRET).toString();
 
   adminUser.tokens.push({ access, token });
   // Return the whole promise
@@ -69,7 +69,7 @@ AdminSchema.statics.findByToken = function (token) {
   let decoded;
 
   try {
-    decoded = jwt.verify(token, 'abc123');
+    decoded = jwt.verify(token, process.env.JWT_SECRET);
   } catch (error) {
     return new Promise((resolve, reject) => {
       reject()

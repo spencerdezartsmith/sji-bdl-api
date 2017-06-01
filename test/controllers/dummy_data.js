@@ -150,7 +150,7 @@ module.exports = {
     password: 'adminOnePass',
     tokens: [{
       access: 'auth',
-      token: jwt.sign({ _id: adminOne, access: 'auth' }, 'abc123').toString()
+      token: jwt.sign({ _id: adminOne, access: 'auth' }, process.env.JWT_SECRET).toString()
     }]
   },
   {

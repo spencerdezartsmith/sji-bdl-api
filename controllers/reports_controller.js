@@ -17,6 +17,12 @@ module.exports = {
     .catch(next);
   },
 
+  getAllEditedReports(req, res, next) {
+    Report.find({ edited: true })
+      .then(reports => res.send(reports))
+      .catch(next);
+  },
+
 	userCreateReport(req, res, next) {
 		const reportProps = req.body;
 

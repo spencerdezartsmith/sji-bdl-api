@@ -7,7 +7,7 @@ module.exports = (app) => {
   app.get('/api', ReportsController.greeting);
 
   // User can
-  // app.get('/api/reports', ReportsController.getAllEditedReports)
+  app.get('/api/reports', ReportsController.getAllEditedReports)
 
   // User can create a reports
   app.post('/api/reports', ReportsController.userCreateReport);

@@ -4,7 +4,7 @@ const dummyAdmins = require('./controllers/dummy_data');
 const Admin = mongoose.model('admin');
 
 before(done => {
-	mongoose.connect('mongodb://localhost/sji_bdl_test');
+	mongoose.connect(process.env.MONGODB_URI);
   mongoose.connection
     .once('open', () => done())
     .on('error', err => {

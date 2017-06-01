@@ -1,3 +1,5 @@
+require('./config');
+
 const express = require('express');
 const bodyParser = require('body-parser');
 const routes = require('./routes/routes');
@@ -21,7 +23,7 @@ const allowCrossDomain = (req, res, next) => {
 // Change to ES6 Promise library
 mongoose.Promise = global.Promise;
 if (process.env.NODE_ENV !== 'test') {
-  mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/sji_bdl')
+  mongoose.connect(process.env.MONGODB_URI)
 };
 
 app.use(allowCrossDomain);

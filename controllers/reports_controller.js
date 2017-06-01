@@ -18,8 +18,12 @@ module.exports = {
   },
 
   getAllEditedReports(req, res, next) {
+    let editedReports;
     Report.find({ edited: true })
-      .then(reports => res.send(reports))
+      .then((reports) => {
+        editedReports = reports.map(report => report.editedReport);
+        res.send(editedReports)
+      })
       .catch(next);
   },
 

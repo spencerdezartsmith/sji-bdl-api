@@ -8,6 +8,23 @@ const Report = mongoose.model('report');
 const adminToken = dummyReports.admins[0].tokens[0].token;
 
 describe('Reports controller', () => {
+  // User can view all reports
+  it('GET /api/reports returns all edited reports', (done) => {
+    const unEditedReport = new Report(dummyReports.reportOne);
+    const editedReport = new Report(dummyReports.reportTwo);
+
+    Promise.all([unEditedReport.save(), editedReport.save()])
+      .then(() => {
+        request(app)
+          .get('/api/reports')
+          .end((err, res) => {
+            assert(res.body.length === 1);
+            assert(res.body[0].title === 'Listen seeing you got ritualistic');
+            done();
+          });
+      });
+  });
+
   // User can create a report
   it('POST to /api/reports creates a new report', (done) => {
     Report.count().then(count => {

@@ -10,7 +10,7 @@ module.exports = (app) => {
   app.get('/api/reports', ReportsController.getAllEditedReports)
 
   // User can create a reports
-  app.post('/api/reports', ReportsController.userCreateReport);
+  app.post('/api/reports/new', ReportsController.userCreateReport);
 
   // User can search edited reports using keywords
   app.get('/api/reports/search', ReportsController.searchEditedReports);
@@ -40,7 +40,7 @@ module.exports = (app) => {
   app.put('/api/admins/update', authenticate, AdminsController.updateLoginDetails);
 
   // Admin read all new unedited reports
-  app.get('/api/reports/new', authenticate, ReportsController.adminReadNewReports);
+  app.get('/api/admins/reports', authenticate, ReportsController.adminReadNewReports);
 
   // Admin can read one report
   app.get('/api/reports/:id', authenticate, ReportsController.adminReadOneReport);

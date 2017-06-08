@@ -19,7 +19,7 @@ const Admin = mongoose.model('admin');
 // })
 
 describe('Admins Controller', () => {
-  it('POST to /api/admin/new creates a new admin', (done) => {
+  it('POST to /api/admins/new creates a new admin', (done) => {
     request(app)
       .post('/api/admins/new')
       .send(dummyAdmins.adminExampleOne)
@@ -38,7 +38,7 @@ describe('Admins Controller', () => {
       });
   });
 
-  it('POST to /api/admin/new should return validation errors if request invalid', (done) => {
+  it('POST to /api/admins/new should return validation errors if request invalid', (done) => {
     request(app)
       .post('/api/admins/new')
       .send(dummyAdmins.adminBrokenEmail)
@@ -49,7 +49,7 @@ describe('Admins Controller', () => {
       });
   });
 
-  it('POST to /api/admin/new should not create an Admin if email in use', (done) => {
+  it('POST to /api/admins/new should not create an Admin if email in use', (done) => {
     request(app)
       .post('/api/admins/new')
       .send(dummyAdmins.admins[1])

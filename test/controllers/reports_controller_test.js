@@ -26,10 +26,10 @@ describe('Reports controller', () => {
   });
 
   // User can create a report
-  it('POST to /api/reports creates a new report', (done) => {
+  it('POST to /api/reports/new creates a new report', (done) => {
     Report.count().then(count => {
       request(app)
-        .post('/api/reports')
+        .post('/api/reports/new')
         .send(dummyReports.reportOne)
         .end(() => {
           Report.count().then(newCount => {
@@ -41,14 +41,14 @@ describe('Reports controller', () => {
   });
 
   // Admin reads new unedited reports
-  it('GET to /api/reports/new returns all the unedited reports', (done) => {
+  it('GET to /api/admins/reports returns all the unedited reports', (done) => {
     const unEditedReport = new Report(dummyReports.reportOne);
     const editedReport = new Report(dummyReports.reportTwo);
 
     Promise.all([unEditedReport.save(), editedReport.save()])
       .then(() => {
         request(app)
-          .get('/api/reports/new')
+          .get('/api/admins/reports')
           .set('x-auth', adminToken)
           .end((err, res) => {
             assert(res.body[0]._id.toString() === unEditedReport._id.toString());

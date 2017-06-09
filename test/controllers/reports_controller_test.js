@@ -20,6 +20,7 @@ describe('Reports controller', () => {
           .end((err, res) => {
             assert(res.body.length === 1);
             assert(res.body[0].title === 'Listen seeing you got ritualistic');
+            assert(res.body[0].date === '2016/12/01')
             done();
           });
       });
@@ -40,7 +41,7 @@ describe('Reports controller', () => {
     });
   });
 
-  // Admin reads new unedited reports
+  // Admin reads new unedited reports first
   it('GET to /api/admins/reports returns all the unedited reports', (done) => {
     const unEditedReport = new Report(dummyReports.reportOne);
     const editedReport = new Report(dummyReports.reportTwo);
@@ -52,7 +53,7 @@ describe('Reports controller', () => {
           .set('x-auth', adminToken)
           .end((err, res) => {
             assert(res.body[0]._id.toString() === unEditedReport._id.toString());
-            assert(res.body[0].edited === false);
+            assert(res.body[1].edited === true);
             done();
           });
       });

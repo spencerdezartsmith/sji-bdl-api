@@ -21,7 +21,16 @@ module.exports = {
     let editedReports;
     Report.find({ edited: true })
       .then((reports) => {
-        editedReports = reports.map(report => report.editedReport);
+        editedReports = reports.map((report) => {
+          let newObj = {};
+          newObj['title'] = report.editedReport.title;
+          newObj['content'] = report.editedReport.content;
+          newObj['date'] = report.date;
+          newObj['coordinates'] = report.geolocation.coordinates;
+          newObj['id'] = report.editedReport._id;
+
+          return newObj
+        })
         res.send(editedReports)
       })
       .catch(next);
@@ -36,7 +45,7 @@ module.exports = {
 	},
 
   adminReadNewReports(req, res, next) {
-    Report.find({ edited: false })
+    Report.find({}).sort({ edited: 1 })
       .then(newReports => res.send(newReports))
       .catch(next);
   },

@@ -119,7 +119,7 @@ describe('Reports controller', () => {
       request(app)
         .get('/api/reports/search?keywords=Suspendisse')
         .end((err, res) => {
-          assert(/Suspendisse/i.test(res.body[0].editedReport.content));
+          assert(/Suspendisse/i.test(res.body[0].content));
           done();
         });
     });

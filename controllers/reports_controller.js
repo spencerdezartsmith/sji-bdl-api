@@ -81,9 +81,22 @@ module.exports = {
 
   searchEditedReports(req, res, next) {
     const criteria = req.query;
+    let editedReports;
 
     Report.find(helpers.buildQuery(criteria))
-      .then((reports) => res.send(reports))
+      .then((reports) => {
+        editedReports = reports.map((report) => {
+          let newObj = {};
+          newObj['title'] = report.editedReport.title;
+          newObj['content'] = report.editedReport.content;
+          newObj['date'] = report.date;
+          newObj['coordinates'] = report.geolocation.coordinates;
+          newObj['id'] = report.editedReport._id;
+
+          return newObj
+        })
+        res.send(editedReports)
+      })
       .catch(next);
   },
 };

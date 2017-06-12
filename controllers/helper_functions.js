@@ -1,6 +1,6 @@
 module.exports = {
   buildQuery(criteria) {
-    const query = {};
+    const query = { edited: true };
 
     if (criteria.keywords) {
       query.$text = { $search: criteria.keywords }

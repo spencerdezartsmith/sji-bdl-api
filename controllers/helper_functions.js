@@ -1,5 +1,5 @@
 module.exports = {
-  buildQuery(criteria) {
+  buildQueryReports(criteria) {
     const query = { edited: true };
 
     if (criteria.keywords) {
@@ -15,5 +15,24 @@ module.exports = {
     };
 
     return query;
+  },
+
+  buildQueryServices(criteria) {
+    const query = {};
+
+    if (criteria.keywords) {
+      query.$text = { $search: criteria.keywords }
+    }
+
+    if (criteria.city) {
+      query.city = criteria.city;
+    };
+
+    if (criteria.type) {
+      query.type = criteria.type;
+    };
+
+    return query;
   }
+
 }

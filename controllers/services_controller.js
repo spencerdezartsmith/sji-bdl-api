@@ -45,7 +45,7 @@ module.exports = {
   searchServices(req, res, next) {
     const searchCriteria = req.query;
 
-    Service.find({ $and: [helpers.buildQuery(searchCriteria)] })
+    Service.find({ $and: [helpers.buildQueryServices(searchCriteria)] })
     .then(results => res.send(results))
     .catch(next);
   }

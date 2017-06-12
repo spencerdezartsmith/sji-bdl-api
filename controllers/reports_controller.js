@@ -83,7 +83,7 @@ module.exports = {
     const criteria = req.query;
     let editedReports;
 
-    Report.find(helpers.buildQuery(criteria))
+    Report.find(helpers.buildQueryReports(criteria))
       .then((reports) => {
         editedReports = reports.map((report) => {
           let newObj = {};

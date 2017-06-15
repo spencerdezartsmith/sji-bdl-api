@@ -3,6 +3,7 @@ const Schema = mongoose.Schema;
 const PointSchema = require('./point_schema');
 const PerpSchema = require('./perp_schema');
 const EditedReportSchema = require('./edited_report_schema');
+const SupportSchema = require('./support_schema');
 
 const ReportSchema = new Schema({
 	city: {
@@ -23,7 +24,8 @@ const ReportSchema = new Schema({
     type: Boolean,
     default: false
   },
-  editedReport: EditedReportSchema
+  editedReport: EditedReportSchema,
+  support: SupportSchema
 });
 
 ReportSchema.index({ 'editedReport.content': 'text', 'editedReport.title': 'text' });

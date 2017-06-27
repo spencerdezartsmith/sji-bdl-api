@@ -11,7 +11,7 @@ module.exports = {
     locationType: 'Hotel/Motel',
     geolocation: { type: 'Point', coordinates: [-122.41, 37.77] },
     gender: 'female',
-    date: '2017/01/01',
+    date: '2016-05-18T16:00:00Z',
     assaultType: ['Robbery', 'Client drunk/high'],
     assaultDescription: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse molestie rutrum lorem. Green pants. Cras feugiat nulla augue, eget fringilla odio ultrices a. Duis eu bibendum metus.',
     perpetrator: {
@@ -33,7 +33,7 @@ module.exports = {
     locationType: 'Hotel/Motel',
     geolocation: { type: 'Point', coordinates: [122.27, 37.80] },
     gender: 'female',
-    date: '2016/12/01',
+    date: '2017-05-18T16:00:00Z',
     assaultType: ['Assault', 'Client drunk/high'],
     assaultDescription: 'Lorem ipsum dolor rutrum blue jacket philipa sit amet, consectetur adipiscing elit. Suspendisse molestie lorem. Cras feugiat nulla augue, eget fringilla odio ultrices a. Duis eu bibendum metus.',
     perpetrator: {
@@ -60,7 +60,7 @@ module.exports = {
     locationType: 'House',
     geolocation: { type: 'Point', coordinates: [122.4194, 37.774] },
     gender: 'female',
-    date: '2016/12/01',
+    date: '2016-01-18T16:00:00Z',
     assaultType: ['Assault', 'Client drunk/high'],
     assaultDescription: 'Lorem ipsum dolor rutrum blue jacket philipa sit amet, consectetur adipiscing elit. Suspendisse molestie lorem. Cras feugiat nulla augue, eget fringilla odio ultrices a. Duis eu bibendum metus.',
     perpetrator: {
@@ -87,7 +87,7 @@ module.exports = {
     locationType: 'Hotel/Motel',
     geolocation: { type: 'Point', coordinates: [122.2729, 37.8022] },
     gender: 'female',
-    date: '2016/12/01',
+    date: '2016-10-18T17:00:00Z',
     assaultType: ['Assault', 'Client drunk/high'],
     assaultDescription: 'Lorem ipsum dolor rutrum blue jacket philipa sit amet, consectetur adipiscing elit. Suspendisse molestie lorem. Cras feugiat nulla augue, eget fringilla odio ultrices a. Duis eu bibendum metus.',
     perpetrator: {

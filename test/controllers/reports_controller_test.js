@@ -20,7 +20,7 @@ describe('Reports controller', () => {
           .end((err, res) => {
             assert(res.body.length === 1);
             assert(res.body[0].title === 'Listen seeing you got ritualistic');
-            assert(res.body[0].date === '2016/12/01')
+            assert(res.body[0].date === 'Thu May 18 2017')
             done();
           });
       });

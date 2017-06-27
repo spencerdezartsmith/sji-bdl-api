@@ -25,7 +25,7 @@ module.exports = {
           let newObj = {};
           newObj['title'] = report.editedReport.title;
           newObj['content'] = report.editedReport.content;
-          newObj['date'] = report.date;
+          newObj['date'] = new Date(report.date).toDateString();
           newObj['coordinates'] = report.geolocation.coordinates;
           newObj['id'] = report.editedReport._id;
 
@@ -89,7 +89,7 @@ module.exports = {
           let newObj = {};
           newObj['title'] = report.editedReport.title;
           newObj['content'] = report.editedReport.content;
-          newObj['date'] = report.date;
+          newObj['date'] = new Date(report.date).toDateString();
           newObj['coordinates'] = report.geolocation.coordinates;
           newObj['id'] = report.editedReport._id;
 

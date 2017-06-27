@@ -16,7 +16,7 @@ const ReportSchema = new Schema({
 	},
 	geolocation: PointSchema,
 	gender: String,
-	date: String,
+	date: Date,
 	assaultType: [String],
 	assaultDescription: String,
 	perpetrator: PerpSchema,

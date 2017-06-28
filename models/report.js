@@ -15,10 +15,19 @@ const ReportSchema = new Schema({
 		required: true
 	},
 	geolocation: PointSchema,
-	gender: String,
-	date: Date,
+	gender: {
+    type: String,
+    required: true
+  },
+	date: {
+    type: Date,
+    required: true
+  },
 	assaultType: [String],
-	assaultDescription: String,
+	assaultDescription: {
+    type: String,
+    required: true
+  },
 	perpetrator: PerpSchema,
   edited: {
     type: Boolean,

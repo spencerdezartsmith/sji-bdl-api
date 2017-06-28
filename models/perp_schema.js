@@ -33,10 +33,7 @@ const PerpSchema = new Schema({
 		type: String,
 		required: true
 	},
-	attributes: {
-		type: String,
-		required: true
-	},
+	attributes: String,
 	vehicle: String
 });
 

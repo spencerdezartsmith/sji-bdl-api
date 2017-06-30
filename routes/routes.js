@@ -28,7 +28,7 @@ module.exports = (app) => {
   app.get('/api/services/:id', ServicesController.getOneService);
 
   // Create a new admin account
-  app.post('/api/admins/new', AdminsController.createNewAdmin);
+  // app.post('/api/admins/new', AdminsController.createNewAdmin);
 
   // Admin can login
   app.post('/api/admins/login', AdminsController.login);

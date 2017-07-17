@@ -10,4 +10,4 @@ You can access this app from your mobile device at http://stjamesbaddatelist.her
 
 ## Screen shots 
 
-<img src='http://i.imgur.com/nN1Eh9A.jpg' width='100' height='500'>
+<img src='http://i.imgur.com/nN1Eh9A.jpg' width='300' height='500'>

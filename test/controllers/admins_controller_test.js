@@ -7,60 +7,60 @@ const dummyAdmins = require('./dummy_data');
 
 const Admin = mongoose.model('admin');
 
-// beforeEach(done => {
-//   Admin.remove({})
-//     .then(() => {
-//       let adminOne = new Admin(dummyAdmins.admins[0]);
-//       let adminTwo = new Admin(dummyAdmins.admins[1]);
-//
-//       return Promise.all([adminOne.save(), adminTwo.save()])
-//     })
-//     .then(() => done());
-// })
+beforeEach(done => {
+  Admin.remove({})
+    .then(() => {
+      let adminOne = new Admin(dummyAdmins.admins[0]);
+      let adminTwo = new Admin(dummyAdmins.admins[1]);
+
+      return Promise.all([adminOne.save(), adminTwo.save()])
+    })
+    .then(() => done());
+})
 
 describe('Admins Controller', () => {
-  // it('POST to /api/admins/new creates a new admin', (done) => {
-  //   request(app)
-  //     .post('/api/admins/new')
-  //     .send(dummyAdmins.adminExampleOne)
-  //     .end((err, res) => {
-  //       assert(res.headers.hasOwnProperty('x-auth'));
-  //       assert(res.body.email === 'testingAuth@test.com');
-  //       if (err) {
-  //         return done(err);
-  //       }
-  //
-  //       Admin.findOne({ email: 'testingAuth@test.com'})
-  //         .then((admin) => {
-  //           assert(admin.password !== dummyAdmins.adminExampleOne.password)
-  //           done()
-  //         });
-  //     });
-  // });
-  //
-  // it('POST to /api/admins/new should return validation errors if request invalid', (done) => {
-  //   request(app)
-  //     .post('/api/admins/new')
-  //     .send(dummyAdmins.adminBrokenEmail)
-  //     .end((err, res) => {
-  //       assert(422);
-  //       assert(res.body.error === 'admin validation failed: email: testing is not a valid email');
-  //       done();
-  //     });
-  // });
-  //
-  // it('POST to /api/admins/new should not create an Admin if email in use', (done) => {
-  //   request(app)
-  //     .post('/api/admins/new')
-  //     .send(dummyAdmins.admins[1])
-  //     .end((err, res) => {
-  //       assert(422)
-  //       assert(
-  //         res.body.error === 'E11000 duplicate key error collection: sji_bdl_test.admins index: email_1 dup key: { : "test@test.com" }'
-  //       )
-  //       done()
-  //     });
-  // });
+  it('POST to /api/admins/new creates a new admin', (done) => {
+    request(app)
+      .post('/api/admins/new')
+      .send(dummyAdmins.adminExampleOne)
+      .end((err, res) => {
+        assert(res.headers.hasOwnProperty('x-auth'));
+        assert(res.body.email === 'testingAuth@test.com');
+        if (err) {
+          return done(err);
+        }
+  
+        Admin.findOne({ email: 'testingAuth@test.com'})
+          .then((admin) => {
+            assert(admin.password !== dummyAdmins.adminExampleOne.password)
+            done()
+          });
+      });
+  });
+  
+  it('POST to /api/admins/new should return validation errors if request invalid', (done) => {
+    request(app)
+      .post('/api/admins/new')
+      .send(dummyAdmins.adminBrokenEmail)
+      .end((err, res) => {
+        assert(422);
+        assert(res.body.error === 'admin validation failed: email: testing is not a valid email');
+        done();
+      });
+  });
+  
+  it('POST to /api/admins/new should not create an Admin if email in use', (done) => {
+    request(app)
+      .post('/api/admins/new')
+      .send(dummyAdmins.admins[1])
+      .end((err, res) => {
+        assert(422)
+        assert(
+          res.body.error === 'E11000 duplicate key error collection: sji_bdl_test.admins index: email_1 dup key: { : "test@test.com" }'
+        )
+        done()
+      });
+  });
 
   it('POST /api/admins/login logs in a valid user and returns a web token', (done) => {
     const loginProps = { email: 'test@test.com', password: '123456' };

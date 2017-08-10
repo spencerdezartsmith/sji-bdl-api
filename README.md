@@ -6,7 +6,7 @@ This project was funded by St James Infirmary and the Department on the Status W
 
 This project was built as a mobile first app utilizing the MERN stack. The front-end is hosted at https://github.com/DianaVashti/sji-bdl-client/. This project is currently open source.
 
-You can access this app from your mobile device at http://stjamesbaddatelist.herokuapp.com/
+You can access this app from your mobile device at http://sfbaddate.com/. Click on the ladybug to install.
 
 ## User Stories
 - A user can make a report

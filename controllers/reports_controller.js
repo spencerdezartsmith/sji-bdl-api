@@ -19,7 +19,7 @@ module.exports = {
 
   getAllEditedReports(req, res, next) {
     let editedReports;
-    Report.find({ edited: true })
+    Report.find({ edited: true }).sort({ _id: -1 })
       .then((reports) => {
         editedReports = reports.map((report) => {
           let newObj = {};

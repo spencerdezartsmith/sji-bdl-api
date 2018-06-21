@@ -54,7 +54,7 @@ module.exports = {
     const reportId = req.params.id;
     const editProps = req.body;
 
-    Report.findByIdAndUpdate(reportId, { $set: { editedReport: editProps, edited: true }})
+    Report.findByIdAndUpdate(reportId, { $set: { editedReport: editProps.reportData, edited: editProps.edited }})
       .then(() => Report.findById({ _id: reportId }))
       .then(report => {
         res.send(report)
